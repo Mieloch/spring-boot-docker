@@ -1,0 +1,22 @@
+
+#default
+spring:
+  datasource:
+    url: jdbc:mysql://localhost/demo_app?autoReconnect=true&useSSL=false
+    username: molbas
+    password: molbas
+
+
+---
+#YAML jest parsowany od gory do dolu, gdzie dol nadpisuje gore.
+#Do Merga wchodza te pliki ktore sa wlaczonym profilem
+
+#container
+spring:
+  profiles: container
+  datasource:
+    url: jdbc:mysql://${MYSQL_PORT_3306_TCP_ADDR}:${MYSQL_PORT_3306_TCP_PORT}/${MYSQL_ENV_MYSQL_DATABASE}
+    username: ${MYSQL_ENV_MYSQL_USER}
+    password: ${MYSQL_ENV_MYSQL_PASSWORD}
+
+
